@@ -3,16 +3,17 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 import joblib
 
-data = pd.read_csv("dataset.csv")
+data = pd.read_csv("Syn.csv", low_memory=False)
 
-X = data[['packet_count', 'avg_packet_size', 'syn_ratio']]
-y = data['label']
+
+X = data[[' Bwd Packet Length Min','Bwd Packet Length Max',' Bwd Packet Length Mean']]
+y = data[' Label']
 
 X_train, X_test, y_train, y_test = train_test_split(
   X, y, test_size=0.2, random_state=42
 )
 
-model = RandomForestClassifier()
+model = RandomForestClassifier( random_state=42)
 
 model.fit(X_train, y_train)
 
