@@ -1,69 +1,122 @@
-# Machine Learning DDoS Detection System
+# AI-Based DDoS Detection System (C++ + Python ML Pipeline)
 
-## Overview
-This project is a **Machine Learning-based DDoS Detection System** designed to identify malicious network traffic in real time. It combines **network traffic analysis** with **supervised learning** to detect Distributed Denial-of-Service (DDoS) attacks.
+## 📌 Overview
+This project is a machine learning–based network traffic analysis system designed to detect abnormal network behavior such as potential DDoS patterns.
 
-The system was developed as part of a hands-on cybersecurity lab, where attack scenarios were simulated and analyzed in a controlled environment.
+The system simulates network traffic using synthetic packet generation and extracts statistical features from PCAP files for classification.
 
----
-
-## Key Features
-- Real-time network traffic monitoring  
-- Machine Learning-based attack detection  
-- Trained classification model for DDoS vs normal traffic  
-- Lightweight and modular design  
-- Attack simulation and testing in a virtual lab  
+The goal of this project is to demonstrate applied knowledge in:
+- Network security fundamentals
+- Feature engineering for ML
+- Cybersecurity anomaly detection
+- System design for real-world data pipelines
 
 ---
 
-## Technologies Used
-- Python  
-- scikit-learn  
-- pandas  
-- Scapy  
-- Matplotlib  
+## 🧠 Project Pipeline
+
+1. Synthetic network traffic generation (normal + anomalous patterns)
+2. PCAP file creation using Scapy
+3. Feature extraction from network packets
+4. Machine learning model training (Random Forest)
+5. Traffic classification (Normal vs Anomaly)
 
 ---
 
-## Machine Learning Model
-The detection system uses a **Random Forest Classifier** trained on network traffic data.
+## 📊 Traffic Simulation Strategy
 
-### Dataset
-- CICIDS2017 dataset  
+To ensure safe and controlled experimentation, the dataset includes:
 
-### Features Used
-- Packet rate  
-- Flow duration  
-- Packet size statistics  
-- Traffic patterns  
+### Normal Traffic
+- Standard TCP ACK traffic
+- Randomized source IPs and ports
+- Low and stable packet rate
 
-### Output
-- `0` → Normal Traffic  
-- `1` → DDoS Attack  
+### Anomalous Traffic (Simulated)
+- Burst-based SYN request patterns
+- High-frequency packet generation within short time windows
+- Randomized source behavior to simulate distributed activity
 
 ---
 
-## System Architecture
+## ⚙️ Feature Extraction
 
-  Network Traffic
-│
-▼
-Packet Capture (Scapy)
-│
-▼
-Feature Extraction
-│
-▼
-ML Model Prediction
-│
-▼
-DDoS Alert
+From each PCAP file, the following features are extracted:
 
-## Future Improvements
-- Deep learning-based detection (LSTM / Neural Networks)
--	Web-based monitoring dashboard
--	Containerized deployment using Docker
-- Integration with real-time network monitoring tools
+- Total packet count
+- SYN packet ratio
+- Average packet size
+
+These features are used to represent network behavior in numerical form for machine learning.
+
+---
+
+## 🛠️ Technologies Used
+
+- Python
+- Scapy (packet manipulation)
+- Pandas (data processing)
+- Scikit-learn (machine learning)
+- C++ (supporting data processing components)
+
+---
+
+## 📁 Example Workflow
+
+### 1. Generate Synthetic Traffic
+- Create normal and anomalous traffic patterns
+- Save as `traffic.pcap`
+
+### 2. Feature Extraction
+- Parse PCAP file
+- Compute statistical features
+
+### 3. Model Training
+- Train classifier using labeled dataset
+- Evaluate performance
+
+### 4. Prediction
+- Classify incoming traffic as:
+  - Normal
+  - Anomalous
+
+---
+
+## 📈 Model Output
+
+The model classifies network traffic based on learned behavior patterns derived from packet-level features.
 
 
+---
 
+## 💡 Key Learnings
+
+- Understanding of network packet structure (TCP/IP)
+- Feature engineering for cybersecurity ML
+- Importance of balanced datasets
+- Limitations of synthetic data in real-world generalization
+- Detection of burst-based anomalies in traffic flows
+
+---
+
+## ⚠️ Known Limitations
+
+- Synthetic dataset does not fully represent real-world internet traffic
+- Limited feature set may reduce detection accuracy in complex scenarios
+- Model may require additional tuning for real deployment environments
+
+---
+
+## 🚀 Future Improvements
+
+- Integrate real-world datasets (CICIDS, UNSW-NB15)
+- Add time-window based feature extraction
+- Implement real-time packet sniffing detection
+- Improve anomaly scoring (unsupervised learning)
+- Deploy as a real-time monitoring system
+
+---
+
+## 👤 Author
+Darlie Henry  
+GitHub: https://github.com/darliehenry033
