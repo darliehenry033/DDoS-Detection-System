@@ -5,7 +5,7 @@ import joblib
 
 data = pd.read_csv("Syn.csv", low_memory=False)
 
-
+data.columns = data.columns.str.strip()
 X = data[[' Bwd Packet Length Min','Bwd Packet Length Max',' Bwd Packet Length Mean']]
 y = data[' Label']
 

@@ -2,7 +2,7 @@ import joblib
 import numpy as np
 from feature_extraction import extract_features
 
-MODEL = joblib.load("ddos_model.pkl")
+MODEL = joblib.load("ddos_model.plk")
 
 features = extract_features("traffic.pcap")
 
